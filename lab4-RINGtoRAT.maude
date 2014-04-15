@@ -1,0 +1,29 @@
+fth RING is
+
+sort Ring .
+
+ops z e : -> Ring .
+
+op _+_ : Ring Ring -> Ring [assoc comm id: z] .
+
+op _*_ : Ring Ring -> Ring [assoc comm id: e] .
+
+op -_ : Ring -> Ring .
+
+vars A B C : Ring .
+
+eq A + (- A) = z [nonexec] .
+
+eq A * (B + C) = (A * B) + (A * C) [nonexec] .
+
+endfth
+
+view RingToRat from RING to RAT is
+
+sort Ring to Rat .
+
+op e to term 1 .
+
+op z to 0 .
+
+endv

@@ -1,0 +1,29 @@
+fmod PAIR{X :: TRIV,Y :: TRIV } is
+  
+  sort Pair{X,Y} .
+  
+  op _,_ : X$Elt Y$Elt -> Pair{X,Y} .
+  op first : Pair{X,Y} ->  X$Elt .
+  op second : Pair{X,Y} -> Y$Elt .
+  
+   var A : X$Elt .
+   var B : Y$Elt .
+  
+
+  eq first(A , B) = A .
+  eq second(A , B) = B .
+  
+  
+ endfm
+ 
+ view MyPair from TRIV to INT is
+   sort Elt to Int .
+ endv
+ 
+ fmod PAIR-INT is
+  protecting PAIR{MyPair , MyPair} .
+ endfm  
+ 
+  
+  
+  

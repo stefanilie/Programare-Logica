@@ -1,0 +1,54 @@
+fmod MYNAT-SIMPLE is
+  sort Nat .
+  op 0 : -> Nat .
+  op s : Nat -> Nat .
+  op _+_ : Nat Nat -> Nat .
+  vars N M : Nat .
+  eq 0 + M = M .
+  eq s(N) + M  =  s(N + M) .
+endfm
+
+fmod MYNAT-SIMPLE* is
+  including MYNAT-SIMPLE .
+  op _*_ : Nat Nat -> Nat .
+  vars M N : Nat .
+  eq 0 * M = 0 .
+  eq s(N) * M = (N * M) + M .
+endfm
+
+fmod MYCOMPLEX is
+  protecting INT .
+  sort Complex .
+
+  subsort Int < Complex .
+
+  op _+i_ : Int Int -> Complex .
+  op _+_ : Complex Complex -> Complex [ditto] .
+  op _-_ : Complex Complex -> Complex  [ditto] .
+  
+  vars A B : Int .
+  vars C D : Int .
+
+  eq (A +i B) + (C +i D) = (A + C) +i (B + D) . 
+  eq (A +i B) - (C +i D) = (A - C) +i (B - D) .
+endfm
+
+
+
+fmod LIST-INT2 is
+  protecting INT .
+  sorts NList List .
+  subsort Int < NList < List .
+  op nil : -> List .
+  op _ _ : Int List -> NList [id: nil] .
+endfm
+
+
+fmod LENGTH is
+  protecting LIST-INT2 .
+  op length : List -> Nat .
+  var I : Int .
+  var L : List .
+  eq length(nil) = 0 .
+  eq length(I L) = 1 + length(L) .
+endfm

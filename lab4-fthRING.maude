@@ -1,0 +1,29 @@
+fth RING is
+  including TRIV .
+ 
+ *** elementele neutre
+  op z : -> Elt .
+  op e : -> Elt .
+  
+ *** operatiile
+  op _+_ : Elt Elt -> Elt  [assoc comm id: z] . *** asociativ si comutativ cu el neutru z
+  op _*_ : Elt Elt -> Elt  [assoc comm id: e] . *** ....................................e
+  op -_ : Elt -> Elt .
+  
+  vars A B C : Elt .
+  
+  eq A + ( - A ) = z [nonexec] .
+  eq  A * ( B + C ) = (A * B) + (A * C) [nonexec] .
+  
+ endfth 
+ 
+ view RingToRat1 from TRIV to RAT is
+
+ sort Elt to Rat .
+
+ op e to term 1 .
+
+ op z to 0 .
+
+endv
+  

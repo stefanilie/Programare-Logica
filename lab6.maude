@@ -1,0 +1,39 @@
+***ex 1
+
+fth TOSET is
+  including TRIV .
+  including BOOL .
+  op _<=_ : Elt Elt -> Bool .
+  vars A B C : Elt .
+  eq A <= A = true [nonexec label reflexivity] . *** reflexivitate
+  ceq (A <= C) = true if ( A <= B and B <= C ) [nonexec label tranzitivity] . ***tranzitivitate
+  ceq A = B if ( A <= B and B <= A ) [nonexec label antysimetry] . *** antisimetrie .
+  ceq B = C if ( not(A <= B ) and not( B <= A) ) [nonexec label total] . *** totala
+endfth  
+
+fmod LIST{X :: TOSET} is
+ sort List{X} .
+ subsort X$Elt < List{X} .
+ op nil : -> List{X} .
+ op _ _ : X$Elt List{X} -> List{X} [assoc id: nil] .
+endfm
+
+fmod LENGTH{X :: TOSET} is
+  protecting LIST{X} .
+  protecting NAT .
+  op length : List{X} -> Nat .
+  var E : X$Elt . ***element
+  var L : List{X} .
+  eq length(nil) = 0 .
+  eq length(E L) = 1 + length(L) .
+endfm
+
+
+view TOSET-TO-INT from TOSET to INT is
+  sort Elt to Int .
+  ***op <= to <= automat . Int are def. operatia si are acelasi nume
+endv
+
+fmod LENGTH-INT is
+  protecting LENGTH{TOSET-TO-INT} .
+endfm

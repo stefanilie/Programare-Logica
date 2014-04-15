@@ -1,0 +1,33 @@
+fmod DATA-CALENDARISTICA is
+
+protecting NAT .
+
+sort Data .
+
+op _/_/_ : NzNat NzNat NzNat -> Data .
+
+op luna : NzNat -> Bool . 
+
+
+
+op an_bisect : NzNat -> Bool .
+
+op add(_,_) : NzNat Data -> Data .
+
+op valid : Data -> Bool .
+
+op luna30 : NzInt -> Bool .
+
+op luna31 : NzInt -> Bool .
+
+vars Z L A : NzNat .
+
+luna(L) = if ( L <= 12 ) then true else false fi .
+luna30(L) = if (L = 4 or L = 6 or L = 9 or L = 11 ) then true else false fi .
+luna31(l) = if( L = 1 or L = 3 or L = 5 or L = 7 or L = 8 or L = 10 or L = 12 ) then true else false fi .
+
+an_bisect(A) = if ( A divides 4) then true else false  fi .
+
+ valid (Z ,L , A) = if ( (an_bisect(A)==true  and (( luna30(L)==true and Z <= 30 ) or ( luna31(L) == true and Z <= 31 ) or ( L==2 and Z <= 29))) or ( an_bisect(A) == false and (( luna30(L)==true and Z <= 30 ) or ( luna31(L) == true and Z <= 31 ) or ( L==2 and Z <= 28))) then true else false fi .
+ 
+ endfm 

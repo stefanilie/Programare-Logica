@@ -1,0 +1,43 @@
+fth TOSET is
+  including TRIV .
+  including BOOL .
+  
+  op _<=_ : Elt Elt -> Bool .
+  
+  vars A B C : Elt .
+  
+  eq A <= A = true [nonexec label reflexivity] . *** reflexivitate
+  ceq (A <= C) = true if ( A <= B and B <= C ) [nonexec label tranzitivity] . ***tranzitivitate
+  ceq A = B if ( A <= B and B <= A ) [nonexec label antysimetry] . *** antisimetrie .
+  ceq B = C if ( not(A <= B ) and not( B <= A) ) [nonexec label total] . *** totala
+
+  
+endfth  
+  
+***perechi de elemente din multimi total ordonate 
+
+fmod PAIR{X :: TOSET,Y :: TOSET } is  
+  sort Pair{X,Y} .
+  op _,_ : X$Elt Y$Elt -> Pair{X,Y} .
+  op first : Pair{X,Y} ->  X$Elt .
+  op second : Pair{X,Y} -> Y$Elt .
+  op _<lex_ : Pair{X,Y} Pair{X,Y} -> Bool .
+  
+  vars A C  : X$Elt .
+  vars B D : Y$Elt .
+  
+  eq first(A , B) = A .
+  eq second(A , B) = B .
+  
+  eq (A,B) <lex (C,D) = ( (A <= C) and not(A = C) )  or ( (A = C) and (B <= D ) )  .
+endfm  
+
+***perechi de intregi 
+
+view TOSET-to-INT from TOSET to INT is
+  sort Elt to Int .
+endv
+
+fmod PAIR-INT is
+  protecting PAIR{TOSET-to-INT ,TOSET-to-INT } .
+endfm .  

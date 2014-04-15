@@ -1,0 +1,123 @@
+fmod LIST-INT2 is
+
+protecting INT .
+
+sorts NList List .
+
+subsort Int < NList < List .
+
+op nil : -> List .
+
+op _ _ : Int List -> NList [id: nil] .
+
+op _in_ : Int NList -> Bool .
+
+op append : List List -> List .
+
+op rev : List -> List .
+
+op insert : Int List -> List .
+
+op sort : List -> List .
+
+vars I N : Int .
+
+vars L K : List .
+
+eq I in N = if I == N  then true else false fi .  
+
+eq I in (N L) = if I == N then true else  ( I in L )   fi .	
+
+eq append( nil, L ) = L .
+
+eq append( I L, K ) = I append( L , K ) .
+
+eq rev (nil) = nil .
+
+eq rev( I ) = I .
+
+eq rev( I L ) = append ( rev( L ) , I ) .
+
+eq insert(I , nil ) = I .
+
+eq insert( I , N L ) = if I <= N then (I N L) else N insert( I , L ) fi . 
+
+eq sort(nil) = nil .
+
+eq sort(I L ) = insert( I , sort( L ) ) . 
+
+endfm
+
+
+
+fmod TREE is
+
+protecting INT .
+
+sort Tree .
+
+op e : -> Tree .
+
+op _ _ _ : Tree Int Tree -> Tree .
+
+endfm
+
+fmod MIRROR is
+
+protecting TREE .
+
+protecting LIST-INT2 .
+
+op mirror : Tree -> Tree .
+
+op search : Int Tree -> Bool .
+
+op depth : Tree -> Int .
+
+op SRD : Tree -> List .
+
+
+vars L R : Tree . 
+
+vars I J : Int .
+
+eq mirror(e) = e .
+
+eq mirror(L I R) = mirror(R) I mirror(L) .
+
+eq search( I , e ) = false .
+
+eq search( I , L J R ) = if (I == J) then true else search( I , L ) or search( I , R ) fi .
+
+eq depth( e ) = 0 .
+
+eq depth( L I R ) = 1 + max ( depth ( L ) , depth ( R) ) .
+
+eq SRD( e ) = nil .
+
+eq SRD( L I R ) = append( SRD( L ) , I ) SRD ( R ).
+ 
+endfm
+
+
+fmod BT-INSERT is
+
+protecting TREE . 
+
+protecting LIST-INT2 . 
+
+op bt-insert : NList Tree -> Tree .
+
+vars J I : Int . 
+
+vars S D T : Tree . 
+
+var L : List .
+
+eq bt-insert( I , e) =  e I e .
+
+eq bt-insert( I , S J D ) = if I <= J then bt-insert( I , S ) J D  else S J bt-insert( I , D ) fi .  
+
+eq bt-insert( I L , T) = bt-insert( L , bt-insert( I , T ) ) .
+
+endfm

@@ -1,0 +1,107 @@
+Ok deci pana acum ai facut module normale, de acum poti sa faci si module cu parametrii
+Iti imaginezi un template
+Si dupa poti sa bagi ce til de date vrei
+Dar ca parametru trebuie sa dai neaparat o formula, formula ce se declara cu fth ... endfth
+Si nu e formula, e teorema
+Dorm eu
+ok, i vaguely remember that
+nu, e teorie
+nu e teorema
+ca asta tin si eu mine
+Teorie :))))
+Intr--o teorie nu bagi prea mult chestii
+Sa-ti spun ce faci in mod normal
+Iti declari un sort, il numesti cum vrei tu
+Iti declari o operatie, un element neutru(adica o constanta, cum e nil la liste) si eventual niste operatii de tip comutativitate, asociativitate
+da, exact pe asta ma uitam acum, pe teoria de la inel
+comutatic
+comutativ(
+Mai usor e sa nu iti mai scrii tu ecuatiile de comutativitate si restul, pui direct dipa ce iti declari operatia de baza [assoc comm id: el neutru]
+Si te-ai scos
+Bun, asta e teoria
+Dupa ce ai scris asta scrii un modul
+Care o sa aiba ca parametru teoria
+Iar in modul ce faci
+da, si asta am citit :))
+Iti declari un sort, normal
+in modul definesc operatiile de la teorie
+Care are si el ca parametrii variabilele din modul
+banuiesc :-s
+Nuuuu
+Deci tu nu ai treaba cu operatiile di teorie
+ok, continua, tac
+Alea sunt asa de umplutura
+Ma rog, sunt la nivel matematic
+Deci in modul
+Iti definesti niste operatii
+Uita cum ne-a dat ea in test, defineam proiectia aia
+Si operatia +
+Dar toata problema a fost la + ala
+Ca nu puteai sa faci (a b c ) + (x y z) = (a+x b+y c+z)
+Pentru ca + ala nu stia sa-ti faca adunare pe Int si pe String si pe Rat cum voia la punctul urmator
+damn, cat de sadic
+Abia aici te foloseai de operatia din teorie, pe care sa zicem ca am denumit-o _@_
+Operatia care trebuia sa aiba element neutru si sa fie adociativa pt ca asa e la monoizi
+Dupa care scriai (a b c) + (x y z) = (a @ x b@y c@z)
+Iar dupa astaaaa
+clar ai traume
+Trebuie sa-i spunem cumva lui Maude ca @ ala o sa-mi faca mai intai adunare pe Int, dupa pe Strjng, dupa pe Rat
+Si pt asta facem un view
+Un view iti transforma parametrul ala din modul intr-un tip date
+Iar cun modulul meu e de triplete deci are trei parametri
+Ii transformam pe fiecare cu cate un view
+Adia view from Monoid to Int
+Si aici scrii ca elementul neutru e 0 si operatia @ e +
+Faci view de la Monoid la String
+Si scrii ca el neutru e " "si @ e tot +
+Ma rog, la toate e plus, ideea e ca trebuia sa scrii asta
+Nu fac niciun sens, nu?
+Uita-te la ultimele probleme din laborator
+face sens, chiar acum am citit din nou tot ce ai spus tu
+si chiar m-a ajutat
+o chestie totusi
+care e sintaxa la view
+Dar nu e terminata problema
+Ca dupa ce faceai celw 3 viewuri
+adica ii dai view form Monoide to Int
+Mai faceai un modul nou in care puneak doar
+Protecting Triplet{myInt, myString, myRat}
+Si gata
+Acum stie cu ce structuri sa lucreze
+La view aj urnatoarea chestie
+View (numele strcturii pe care o pui cand faci protecting la sfarsit ) from (teorema pe care ai folosit-o in parametru, aici monozizii) to (tipul de date pe care vrei sa-l folosesti, gen INT sau STRING sau RAT )
+Ex: view myInt from Monoid to INT
+Iaar in view suprascrii toate operatiile din teorie
+da am inteles asta
+dumnezeule...
+Sa zicem ca sortul tau se numea Mono, deci fact sort Mono to Int
+Sa zicem ca aveai un element neutru e, deci ii zici ca la Int el e 0
+Si faci op e to 0
+Sa zicem ca aveai operatia @ care era asociativa si bla bla
+Ii zici ca la Int ea trebuie sa fie + ca sa adune doua inturi
+Si faci op _@_ to _+_
+Cam asta e
+Si la String si Rat faci la fel
+got it
+serios
+chiar am inteles
+:))
+ai fi buna de profa.
+Incerc sa cred :)))
+Pe mine ma dor ochii
+Mai ai vreo intrebare?
+sincer, as vrea sa dormn... si tare mi-e ca daca mai gasesc ceva ce nu inteleg ma tii pana dimineata
+si eu de dimineata vreau sa mai lucreez la exercitii
+:)))
+Nu mai pot
+te cred
+Pai atunci bagam somn
+Bafta maine
+hai ca raman dator
+Lasa
+si vezi ca de la 40% e gen 10 %
+:))
+Ca imi place sa explic :))
+hai somn usor
+Ma fac ca nu vad :))
+Somn usor

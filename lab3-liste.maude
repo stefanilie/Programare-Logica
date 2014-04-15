@@ -1,0 +1,74 @@
+fmod LIST-INT2 is
+
+	protecting INT
+	sorts NList List
+	subsort Int < NList < List
+	op nil : -> List
+	op _ _ : Int List -> NList [id: nil]
+
+
+endfm
+
+
+fmod LENGTH is
+
+protecting LIST-INT2
+	op length : List -> Nat
+	var I : Int
+	var L : List
+	eq length(nil) = 0
+	eq length(I L) = 1 + length(L)
+endfm
+
+fmod OPERATII is
+	protecting LIST-INT2
+
+	op _in_ : Int NList -> Bool .
+	op append : List List -> List .
+	op rev : List -> List .
+	op sort : List -> List .
+	op insert : Int List -> List .
+
+	vars I N : Int .
+	vars L K : List .
+
+
+	eq (N in (I L)) = if(N == I) then true else (N in L ) fi .
+	eq (I in L) = if (I == L) then true else false fi .
+
+	eq append(nil , L ) = L .
+	eq append( I L , K ) = I append(L , K) .
+
+	eq rev(nil) = nil .
+	eq rev(I) = I .
+	eq rev(I L) = append( rev( L ) , I) .
+
+	eq insert(I , nil ) = I .
+	eq insert(N ,I L) = if (I < N) then (I insert(N , L)) else (N (I L)) fi . 
+
+	eq sort(nil) = nil .
+	eq sort(I) = I .
+	eq sort(I L) = insert(I , sort(L) ) .
+
+endfm 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,91 @@
+*** Multimi de numere (intregi)=liste in care nu conteaza ordinea si nu am duplicate
+*** ordoneaza numerele pt ca este  comutativa
+***3.1
+fmod SET{X :: TRIV} is
+  sort Set{X} .
+  sort NeSet{X} . ***3.3
+  
+  subsort X$Elt < NeSet{X} .
+  subsort NeSet{X} < Set{X} . ***3.3
+  op vid : -> Set{X} .
+  op _ _ : Set{X} Set{X} -> Set{X} [assoc comm id: vid] .
+  var X : X$Elt .
+  eq X X = X .
+endfm
+
+view TRIV-TO-INT from TRIV to INT is
+ sort Elt to Int .
+endv
+
+fmod SET-INT is
+  protecting SET{TRIV-TO-INT} .
+endfm  
+
+***3.2
+
+fth TOSET is
+  including TRIV .
+  including BOOL .
+  op _<=_ : Elt Elt -> Bool .
+  vars A B C : Elt .
+  eq A <= A = true [nonexec label reflexivity] . *** reflexivitate
+  ceq (A <= C) = true if ( A <= B and B <= C ) [nonexec label tranzitivity] . ***tranzitivitate
+  ceq A = B if ( A <= B and B <= A ) [nonexec label antysimetry] . *** antisimetrie .
+  ceq B = C if ( not(A <= B ) and not( B <= A) ) [nonexec label total] . *** totala
+endfth  
+
+***view de la teorie(th) la teorie .TOSET are sorturile TRIV si BOOL . Putem mapa Elt (din SET) la Elt din (TOSET) => se face automat => view gol
+*** SET ramane parametrizat la TOSET . SET{TRIV-TO-TOSET}-> elemente tot Elt dar mai are operatia <=
+view TRIV-TO-TOSET from TRIV to TOSET is
+
+endv 
+
+
+***instantiem complet
+view TOSET-TO-INT from TOSET to INT is
+  sort Elt to Int .
+  ***op <= to <= automat . Int are def. operatia si are acelasi nume
+endvview TOSET-TO-INT from TOSET to INT is
+  sort Elt to Int .
+  ***op <= to <= automat . Int are def. operatia si are acelasi nume
+endv
+***SET are elemente  care provin din multimi ordonate
+
+
+fmod SET-TOSET is
+  protecting SET{TRIV-TO-TOSET}{TOSET-TO-INT} .
+endfm
+
+***3.3
+***max - intregi
+
+fmod SET-MAX{T :: TOSET} is
+  protecting SET{TRIV-TO-TOSET}{T} .
+  op maxim : NeSet{TRIV-TO-TOSET}{T} -> T$Elt . ***NeSet =Not Empty Set
+  var M : Set{TRIV-TO-TOSET}{T} . ***multime
+  var T : T$Elt .  *** un element
+  eq maxim(T) = T .
+  ceq maxim(T M) = T if (maxim(M) <= T)  .
+  eq maxim(T M) = maxim(M) [owise] . ***otherwise 
+*** ceq maxim(T M ) = maxim(M) if T <= maxim(M) .  
+endfm
+
+fmod SET-MAX-INT is
+  protecting SET-MAX{TOSET-TO-INT} .
+endfm  
+ 
+*** max-siruri de caractere
+
+view TOSET-TO-STRING from TOSET to STRING is
+  sort Elt to String .
+endv
+
+fmod SET-MAX-STRING is
+  protecting SET-MAX{TOSET-TO-STRING} .
+endfm  
+
+
+
+
+ 
+
