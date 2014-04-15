@@ -1,0 +1,11 @@
+fmod LIST-INT2 is
+	protected INT .
+	sorts NList List .
+	subsort Int < NList < List .
+	op nil : -> List .
+	op _in_ : Int NList -> Bool	.
+	op _ _ : Int List -> NList [id: nil] .
+	
+endfm
+
+
